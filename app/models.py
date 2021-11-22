@@ -7,8 +7,11 @@ class Supplier(models.Model):
     phone = models.CharField(max_length = 20, default="firma")
     email = models.CharField(max_length = 50, default="firma")
     country = models.CharField(max_length = 50, default="firma")
+    # ao:n voi tehdä jos haluaa että admin sivu toimii myöhemmässä vaiheessa paremmin,
+    # mutta se ei ole välttämätöntä alussa
     def __str__(self):
         return f"{self.companyname}, {self.country}"
+
 
 class Product(models.Model):
     productname = models.CharField(max_length = 20, default = "laku")
@@ -16,5 +19,8 @@ class Product(models.Model):
     unitprice = models.DecimalField(max_digits=8, decimal_places=2, default=1.00)
     unitsinstock = models.IntegerField(default = 3)
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+     # ao:n voi tehdä jos haluaa että admin sivu toimii myöhemmässä vaiheessa hienommin,
+     # mutta se ei ole välttämätöntä alussa
     def __str__(self):
         return f"{self.productname}, {self.supplier.companyname}"
+
