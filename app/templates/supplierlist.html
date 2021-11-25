@@ -10,6 +10,16 @@
 
 <button id="add-btn" class="btn btn-success btn-sm" onclick="showaddform()">Add new supplier</button>
 
+
+        <form method="post" action="/search-suppliers/">
+
+            {%csrf_token %}
+            <input class="card-text" class="card-text" type="text" placeholder="search" name="search">
+
+            <input type="submit" value="Search" class="btn btn-success btn-sm" name="">
+        </form>
+  
+
 {% for s in suppliers %}
 <div class="card" style="width: 50rem;">
     <div class="card-body">
