@@ -18,14 +18,11 @@
         <p class="card-text">Address: {{s.address}} | Country: {{s.country}}</p>
 
         <a href="/edit-supplier-get/{{s.id}}/" class="btn btn-primary">Edit</a>
-        <a href="/delete-supplier/{{s.id}}/" class="btn btn-danger">Delete</a>
+        <a href="/confirm-delete-product/{{s.id}}/" class="btn btn-danger">Delete</a>
         <a href="/products-by-supplier/{{s.id}}/" class="btn btn-secondary">{{s.companyname}} Products</a>
     </div>
 </div>
 
-{% empty %}
-
-<p>No Suppliers in database</p>
 
 {%endfor%}
 
