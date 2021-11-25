@@ -2,6 +2,81 @@
 
 {% block content %}
 
+<br />
+<!-- Lisäyslomakkeen paikka -->
+<div id="add-div"></div>
+<br />
+
 <h1>Products</h1>
+
+<a onclick="showaddform()" class="btn btn-primary">Add new</a>
+
+{% for p in products %}
+
+<div class="card" style="width: 50rem;">
+    <div class="card-body">
+        <h3 class="card-title">{{p.productname}} </h3>
+        <h5 class="card-text">Supplier: {{p.supplier.companyname}}</h5>
+        <p class="card-text">packagesize: {{p.packagesize}} | unitprice: {{p.unitprice}}</p>
+        <p class="card-text" style="color: green;">Units in stock: {{p.unitsinstock}}</p>
+        <a href="/edit-product-get/{{p.id}}/" class="btn btn-primary">Edit</a>
+
+        <a href="/confirm-delete-product/{{p.id}}/" class="btn btn-danger">Delete</a>
+
+        <a href="/products-by-supplier/{{p.supplier.id}}/" class="btn btn-secondary">{{p.supplier.companyname}}´s all
+            Products</a>
+
+    </div>
+</div>
+
+
+{% empty %}
+
+<div class="card" style="width: 50rem;">
+    <div class="card-body">
+        <p class="card-text">No products found in the database </p>
+    </div>
+</div>
+
+{%endfor%}
+
+
+<script>
+
+    let y = `
+    <h2 style="color: darkorange;">Please fill in form</h2>
+    
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <form method="post" action="/add-product/">
+                {%csrf_token %}
+                <input class="card-text" class="card-text" type="text" placeholder="product name" name="productname">
+                <input class="card-text" type="text" placeholder="package size" name="packagesize">
+                <input class="card-text" type="text" placeholder="unitprice" name="unitprice">
+                <input class="card-text" type="text" placeholder="units in stock or 0" name="unitsinstock">
+                <br />
+                <label for="supplier">Supplier</label>
+                <select id="supplier" name="supplier">
+                {% for s in suppliers %}
+                  <option value="{{s.id}}">{{s.companyname}}</option>
+                  {% endfor %}
+                </select>
+
+                <br/>
+                <input type="submit" value="Confirm" class="btn btn-success btn-sm" name="">
+                <input type="submit" id="hide-btn" class="btn btn-secondary btn-sm" onclick="hideaddform()" value="Cancel" name="">
+            </form>
+        </div>
+    </div>`
+
+    function showaddform() {
+        document.getElementById("add-div").innerHTML = y
+    }
+
+    function hideaddform() {
+        document.getElementById("add-div").innerHTML = ""
+    }
+
+</script>
 
 {% endblock %}
