@@ -10,7 +10,7 @@ class Supplier(models.Model):
     # ao:n voi tehdä jos haluaa että admin sivu toimii myöhemmässä vaiheessa paremmin,
     # mutta se ei ole välttämätöntä alussa
     def __str__(self):
-        return f"{self.companyname}, {self.country}"
+        return f"{self.companyname} from {self.country}"
 
 
 class Product(models.Model):
@@ -22,5 +22,5 @@ class Product(models.Model):
      # ao:n voi tehdä jos haluaa että admin sivu toimii myöhemmässä vaiheessa hienommin,
      # mutta se ei ole välttämätöntä alussa
     def __str__(self):
-        return f"{self.productname}, {self.supplier.companyname}"
+        return f"{self.productname} produced by {self.supplier.companyname}"
 
