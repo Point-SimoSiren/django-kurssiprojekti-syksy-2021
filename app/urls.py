@@ -1,7 +1,6 @@
 from django.urls import path
 
-from app.views import landingview
-from .views import landingview, productlistview, supplierlistview, addsupplier
+from .views import landingview, productlistview, supplierlistview
 
 urlpatterns = [
     path('', landingview),
@@ -11,5 +10,4 @@ urlpatterns = [
 
     # Supplier url´s
     path('suppliers/', supplierlistview),
-    path('add-supplier/', addsupplier),
 ]
