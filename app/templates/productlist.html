@@ -9,7 +9,7 @@
 
 <h1>Products</h1>
 
-<a onclick="showaddform()" class="btn btn-primary">Add new</a>
+<a onclick="showaddform()" class="btn btn-primary">Add new product</a>
 
 {% for p in products %}
 
@@ -19,6 +19,7 @@
         <h5 class="card-text">Supplier: {{p.supplier.companyname}}</h5>
         <p class="card-text">packagesize: {{p.packagesize}} | unitprice: {{p.unitprice}}</p>
         <p class="card-text" style="color: green;">Units in stock: {{p.unitsinstock}}</p>
+        
         <a href="/edit-product-get/{{p.id}}/" class="btn btn-primary">Edit</a>
 
         <a href="/confirm-delete-product/{{p.id}}/" class="btn btn-danger">Delete</a>
@@ -61,7 +62,6 @@
                   <option value="{{s.id}}">{{s.companyname}}</option>
                   {% endfor %}
                 </select>
-
                 <br/>
                 <input type="submit" value="Confirm" class="btn btn-success btn-sm" name="">
                 <input type="submit" id="hide-btn" class="btn btn-secondary btn-sm" onclick="hideaddform()" value="Cancel" name="">
