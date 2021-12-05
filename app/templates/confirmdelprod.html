@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1>Product delete</h1>
+
+<div class="card" style="width: 50rem;">
+    <div class="card-body">
+        <h3 class="card-title">Confirm removal of product</h3>
+        <h5 class="card-text">Product: {{product.productname}}</h5>
+        
+        <a href="/products/" class="btn btn-primary">Back</a>
+
+        <a href="/delete-product/{{product.id}}/" class="btn btn-danger">Delete</a>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Products and vendors</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <center>
+
+            <div class="card" style="width: 25rem; margin-top: 50px;">
+
+                <div class="card-header">
+
+                    <h5>Login</h5>
+
+                    <div class="card-body">
+
+                        <form id="myForm" method="post" action="/login/">
+
+                            {%csrf_token %}
+                            <div class="form-group">
+                                <label>user name</label>
+                                <input autofocus type="text" name="username">
+                            </div>
+                            <div class="form-group">
+                                <label>password</label>
+                                <input type="password" name="password">
+                            </div>
+
+                            <input type="submit" value="Login" class="btn btn-success btn-sm">
+
+                            <input type="button" onclick="reset()" class="btn btn-secondary btn-sm" value="Reset">
+
+                        </form>
+                    </div>
+                    <input type="button" onclick="window.location.href='/admin/'" class="btn btn-warning btn-sm"
+                        value="Admin pages">
+                </div>
+            </div>
+
+            <script>
+                function reset() {
+                    document.getElementById("myForm").reset()
+                }
+            </script>
+
+        </center>
+    </div>
+
+</body>
+
+
+</html>
