@@ -7,6 +7,8 @@ from django.test import Client
 from django.urls import reverse
 client = Client()
 
+# setUp metodi testiluokan alussa määrittää jonkin toimenpiteen tekemisen ennen jokaista jäljempänä määritettyä testiä.
+
 class SupplierModelTests(TestCase):
     def setUp(self):
         Supplier.objects.create(companyname="Test company", contactname="Jaakko Kulta", address="Kultatie 1", phone="12345567", email="jaakko@kulta.fi", country="Finland")
@@ -43,7 +45,7 @@ class UserAuthTests(TestCase):
         
 
     def test_listing_suppliers(self):
-        '''Call to supplier list url returns statuscode 200'''
+        '''Call to supplier list url returns statuscode 200 but let not enter in'''
         response = client.get(reverse(supplierlistview))
         self.assertEqual(response.status_code, 200)
         a = False
